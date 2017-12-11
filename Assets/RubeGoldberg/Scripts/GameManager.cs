@@ -114,7 +114,7 @@ public class GameManager : MonoBehaviour {
 			endGame.endTitle.gameObject.SetActive (true);
 			endGame.laserPointer.gameObject.SetActive (true);
 
-			endGame.objectMenuManager.isEnabled = false;
+			//endGame.objectMenuManager.isEnabled = false;
 			endGame.PlayAudio ();
 
 			foreach (Star star in puzzle.stars) {

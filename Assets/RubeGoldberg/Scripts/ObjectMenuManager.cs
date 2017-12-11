@@ -28,20 +28,20 @@ public class ObjectMenuManager : MonoBehaviour {
 	#endregion
 
 	#region Properties (Object Displays)
-	public bool isEnabled;
-	public GameObject objectDisplay;
+	public bool isActive = false;
+	//public GameObject objectDisplay;
 
-	public Text objectTitle;
+	//public Text objectTitle;
 	public int currentObject = 0;
 
-	public Text objectQuantity;
-	public int currentQuantity = 0;
+	//public Text objectQuantity;
+	//public int currentQuantity = 0;
 	#endregion
 
 	#region Properties (Tutorial)
-	public bool isPlayingTutorial;
-	public bool isUsingMenu;
-	public bool hasSpawnedObject;
+	//public bool isPlayingTutorial;
+	//public bool isUsingMenu;
+	//public bool hasSpawnedObject;
 	#endregion
 
 	#region Initialization
@@ -53,9 +53,11 @@ public class ObjectMenuManager : MonoBehaviour {
 			objectList.Add (child.gameObject);
 		}
 
-		// Setup the object title and quantity displays
-		/*UpdateTitleDisplay ();
-		UpdateQuantityDisplay ();*/
+		// hide all objects 
+		foreach (GameObject obj in objectList) {
+			obj.SetActive (false);
+		}
+			
 	}
 
 	private void InitializeController () {
@@ -78,6 +80,21 @@ public class ObjectMenuManager : MonoBehaviour {
 
 	#endregion
 
+	#region EnableDisableMenu
+	public void EnableDisableMenu(){
+		isActive ^= true;
+		if (isActive) {
+			// show current
+			objectList [currentObject].SetActive (true);
+		} else {
+			// hide all objects 
+			foreach (GameObject obj in objectList) {
+				obj.SetActive (false);
+			}
+		}
+	}
+	#endregion
+
 	#region Swipe
 	public void SwipeLeft () {
 		objectList [currentObject].SetActive (false);
@@ -86,9 +103,7 @@ public class ObjectMenuManager : MonoBehaviour {
 			currentObject = objectList.Count - 1;
 		}
 		objectList [currentObject].SetActive (true);
-		/*UpdateTitleDisplay ();
-		UpdateQuantityDisplay ();
-		TutorialSelectPlank ();*/
+	
 	}
 
 	public void SwipeRight () {
@@ -98,9 +113,7 @@ public class ObjectMenuManager : MonoBehaviour {
 			currentObject = 0;
 		}
 		objectList [currentObject].SetActive (true);
-		/*UpdateTitleDisplay ();
-		UpdateQuantityDisplay ();
-		TutorialSelectPlank ();*/
+
 	}
 	#endregion
 

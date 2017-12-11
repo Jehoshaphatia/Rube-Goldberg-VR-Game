@@ -72,11 +72,11 @@ public class ControllerInputManager : MonoBehaviour {
 	{
 		if (col.gameObject.CompareTag("Structure"))
 		{
-			if (device.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
+			if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
 			{
 				ThrowObject(col);    
 			}
-			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Grip))
+			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
 			{
 				DropObject(col);
 			}

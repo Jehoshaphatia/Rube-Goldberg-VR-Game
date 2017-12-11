@@ -39,7 +39,7 @@ public class HandInteraction : MonoBehaviour {
 			if (!hasSwipedRight) {
 				if (swipeSum > 0.5f) {
 					swipeSum = 0;
-					SwipeRight();
+					SwipeRight ();
 					hasSwipedRight = true;
 					hasSwipedLeft = false;
 				}
@@ -48,12 +48,12 @@ public class HandInteraction : MonoBehaviour {
 			if (!hasSwipedLeft) {
 				if (swipeSum < -0.5f) {
 					swipeSum = 0;
-					SwipeLeft();
+					SwipeLeft ();
 					hasSwipedLeft = true;
 					hasSwipedRight = false;
 				}
 			}
-		}
+		} 
 
 		if (device.GetTouchUp (SteamVR_Controller.ButtonMask.Touchpad)) {
 			//Reset Swipe
@@ -62,6 +62,11 @@ public class HandInteraction : MonoBehaviour {
 		if (device.GetPressDown (SteamVR_Controller.ButtonMask.Trigger)) {
 			//Spawn object currently selected by menu
 			SpawnObject();
+
+		}
+		if (device.GetPressUp(SteamVR_Controller.ButtonMask.Grip))
+		{
+			objectMenuManager.EnableDisableMenu ();    
 		}
 	}
 
