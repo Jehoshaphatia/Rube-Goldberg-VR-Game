@@ -19,18 +19,21 @@ public class Throwzone : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == "Platfrom")
 		{
 			areaMaterial.color = Color.green;
+			Debug.Log("Has enter zone");
 		}
 		isOut = false;
+
 	}
 
 	void OnTriggerExit(Collider other)
 	{
-		if (other.tag == "Player")
+		if (other.tag == "platform")
 		{
 			areaMaterial.color = Color.red;
+			Debug.Log ("Has left zone");
 		}
 		isOut = true;
 	}

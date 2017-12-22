@@ -97,7 +97,10 @@ public class HandInteraction : MonoBehaviour {
 		{
 			if (device.GetPressUp(SteamVR_Controller.ButtonMask.Trigger))
 			{
-				ThrowObject(col);    
+				if (!Throwzone.isOut) {
+					ThrowObject(col);
+				}
+				    
 			}
 			else if (device.GetPressDown(SteamVR_Controller.ButtonMask.Trigger))
 			{

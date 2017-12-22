@@ -5,7 +5,7 @@ using UnityEngine;
 public class ControllerInputManager : MonoBehaviour {
 	public SteamVR_TrackedObject trackedObj;
 	public SteamVR_Controller.Device device;
-	public float throwForce = 1.5f;
+	public float throwForce = 1.15f;
 
 
 	//Teleporter
@@ -35,28 +35,27 @@ public class ControllerInputManager : MonoBehaviour {
 
 			laser.SetPosition(0, gameObject.transform.position);
 			RaycastHit hit;
-			if (Physics.Raycast(transform.position, transform.forward, out hit,5, laserMask))
+			if (Physics.Raycast(transform.position, transform.forward, out hit, 25f, laserMask))
 			{
 				teleportLocation = hit.point;
 				laser.SetPosition(1, teleportLocation);
 				//aimer position
 				teleportAimerObject.transform.position = new Vector3(teleportLocation.x, teleportLocation.y + yNudgeAmount, teleportLocation.z);
 			}
-			else
+			/*else
 			{
-				teleportLocation = transform.position + transform.forward *5;
+				teleportLocation = transform.forward * 15 + transform.position;
 				RaycastHit groundRay;
-				if(Physics.Raycast(teleportLocation, -Vector3.up, out groundRay, 17, laserMask))
+				if(Physics.Raycast(teleportLocation, -Vector3.up, out groundRay, 15f, laserMask))
 				{
-					teleportLocation = new Vector3 (transform.forward.x *5 + transform.position.x, groundRay.point.y, transform.forward.z *5 + transform.position.z);
+					teleportLocation = groundRay.point;
 
 				}
-				laser.SetPosition(1, transform.forward *5 + transform.position);
+				laser.SetPosition(1, transform.forward * 15 + transform.position);
 				//aimer position
 				teleportAimerObject.transform.position = teleportLocation + new Vector3(0, yNudgeAmount, 0);
 
-			}
-
+			}*/
 		}
 		if (device.GetPressUp(SteamVR_Controller.ButtonMask.Touchpad))
 		{

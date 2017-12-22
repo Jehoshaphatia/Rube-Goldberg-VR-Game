@@ -56,7 +56,7 @@ public class BallReset : MonoBehaviour {
 	#endregion
 
 	#region Reset Position
-	private IEnumerator Reset () {
+	public IEnumerator Reset () {
 		// Wait for n seconds
 		yield return new WaitForSeconds (resetInSeconds);
 
@@ -76,7 +76,7 @@ public class BallReset : MonoBehaviour {
 		rigidBody.isKinematic = false;
 	}
 
-	private void ResetPosition () {
+	public void ResetPosition () {
 		transform.position = ballStart.position;
 		transform.rotation = Quaternion.identity;
 	}
